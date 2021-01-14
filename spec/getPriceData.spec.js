@@ -6,4 +6,3 @@ describe('getPriceData', () => {
     expect(response.symbol).toBe('VTWIX');
   });
 })
-

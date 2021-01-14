@@ -1,6 +1,9 @@
-const getPriceData = require('../src/stockApi');
+const getPriceData = require('../src/getPriceData');
 
-it('your test', async () => {
-  const response = await getPriceData('vtwix')
-  expect(response.symbol).toBe('VTWIX');
-});
+describe('getPriceData', () => {
+  it('returns price data from yahoo finance API', async () => {
+    const response = await getPriceData('vtwix')
+    expect(response.symbol).toBe('VTWIX');
+  });
+})
+

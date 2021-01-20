@@ -1,4 +1,5 @@
 const StockChecker = require('../src/StockChecker')
+const getPriceData = require('../src/getPriceData')
 const mockPriceObject = require('../mockStockObject.json')
 
 const mockPriceDataUnder5 = {
@@ -6,7 +7,7 @@ const mockPriceDataUnder5 = {
   currency: 'USD',
   regularMarketPrice: { raw: 192.4, fmt: '192.40' },
   symbol: 'VTWIX',
-  regularMarketChangePercent: { raw: -0.010542556, fmt: '-1.05%' }
+  regularMarketChangePercent: { raw: -0.010542556, fmt: '-2.05%' }
 }
 
 const mockPriceDataOver5 = {

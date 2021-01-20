@@ -14,6 +14,7 @@ getPriceData = (symbol, region = 'us') => {
 
   return axios.request(formData).then(function (response) {
     priceData = response.data.price;
+    // console.log(priceData)
     return priceData
   }).catch(function (error) {
     console.error(error);

@@ -21,7 +21,7 @@ getPriceData = (symbol, region = 'us') => {
 }
 
 getMultiplePriceData = async (arr) => {
-  const promises = await arr.map(async x => getPriceData(x.symbol, x.region))
+  const promises = arr.map(x => getPriceData(x.symbol, x.region))
 
   const priceDataObjectArr = await Promise.all(promises)
   return priceDataObjectArr

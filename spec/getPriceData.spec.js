@@ -17,7 +17,8 @@ describe('getMultiplePriceData', () => {
       {
         symbol: 'btc-gbp',
         region: "en"
-      }]
+      }
+    ]
     const priceDataArray = await priceDataModule.getMultiplePriceData(targetArray)
 
     expect(priceDataArray[0].symbol).toBe('VTWIX')

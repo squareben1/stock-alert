@@ -1,2 +1,0 @@
-// const handler = import('../index')
-

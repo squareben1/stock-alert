@@ -14,7 +14,6 @@ getPriceData = (symbol, region = 'us') => {
 
   return axios.request(formData).then(function (response) {
     priceData = response.data.price;
-    console.log('CALLED:', priceData)
     return priceData
   }).catch(function (error) {
     console.error(error);
@@ -22,7 +21,7 @@ getPriceData = (symbol, region = 'us') => {
 }
 
 getMultiplePriceData = async (arr) => {
-  const promises = await arr.map(async x => getPriceData(x))
+  const promises = await arr.map(async x => getPriceData(x.symbol, x.region))
 
   const priceDataObjectArr = await Promise.all(promises)
   return priceDataObjectArr

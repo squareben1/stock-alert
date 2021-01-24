@@ -17,6 +17,10 @@ describe('StockChecker', () => {
   })
   it('returns percentage + info if down 5%', () => {
     var stockChecker = new StockChecker(mockPriceDataOver5);
-    expect(stockChecker.checkPercent()).toBe('VTWIX is down by 5%; $194.40')
+    expect(stockChecker.checkPercent()).toBe('VTWIX is down by -5.00%; $182.78')
+  })
+  it('sets custom price percent change threshold', () => {
+    var stockChecker = new StockChecker(mockPriceObject, 1);
+    expect(stockChecker.checkPercent()).toBe('VTWIX is down by -1.05%; $192.40')
   })
 })

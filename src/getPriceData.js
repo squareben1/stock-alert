@@ -14,10 +14,18 @@ getPriceData = (symbol, region = 'us') => {
 
   return axios.request(formData).then(function (response) {
     priceData = response.data.price;
+    console.log('CALLED:', priceData)
     return priceData
   }).catch(function (error) {
     console.error(error);
   });
 }
 
-module.exports = getPriceData;
+getMultiplePriceData = async (arr) => {
+  const promises = await arr.map(async x => getPriceData(x))
+
+  const priceDataObjectArr = await Promise.all(promises)
+  return priceDataObjectArr
+}
+
+module.exports = { getPriceData, getMultiplePriceData }

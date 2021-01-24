@@ -3,7 +3,8 @@
     "jest": "^26.6.3"
   },
   "scripts": {
-    "test": "jest --detectOpenHandles"
+    "test": "jest --detectOpenHandles",
+    "locally": "node -e \"console.log(require('./index').handler({}));\""
   },
   "dependencies": {
     "axios": "^0.21.1",

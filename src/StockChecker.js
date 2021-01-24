@@ -10,7 +10,9 @@ class StockChecker {
   }
   checkPercent = () => {
     if (this.marketChangePercentFloat <= this.marketChangePercentThreshold) {
-      return `${this.symbol} is down by ${this.marketChangePercentString}; ${this.currencySymbol + this.regularMarketPrice}`
+      const responseString = `${this.symbol} is down by ${this.marketChangePercentString}; ${this.currencySymbol + this.regularMarketPrice}`
+      console.log(responseString)
+      return responseString
     } else {
       console.log(`Below Threshold: ${this.symbol} change = ${this.marketChangePercentString}`)
       return false
@@ -22,5 +24,3 @@ class StockChecker {
 }
 
 module.exports = StockChecker
-
-// run multiple

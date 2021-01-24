@@ -12,8 +12,8 @@ class StockChecker {
     if (this.marketChangePercentFloat <= this.marketChangePercentThreshold) {
       return `${this.symbol} is down by ${this.marketChangePercentString}; ${this.currencySymbol + this.regularMarketPrice}`
     } else {
-      console.log(`${this.symbol} change = ${this.marketChangePercentString}`)
-      return null
+      console.log(`Below Threshold: ${this.symbol} change = ${this.marketChangePercentString}`)
+      return false
     }
   }
   getSymbol = () => {
@@ -23,5 +23,4 @@ class StockChecker {
 
 module.exports = StockChecker
 
-// TODO remove magic 5 - pass in? 
 // run multiple

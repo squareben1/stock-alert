@@ -6,21 +6,25 @@ const mockPriceDataOver5 = {
   currency: 'USD',
   regularMarketPrice: { raw: 192.4, fmt: '182.78' },
   symbol: 'VTWIX',
-  regularMarketChangePercent: { raw: -0.010542556, fmt: '-5.00%' }
+  regularMarketChangePercent: { raw: -0.050042556, fmt: '-5.00%' }
 }
 
 describe('StockChecker', () => {
-  it('returns null when percent change < 5%', () => {
+  it('returns false when percent change < 5%', () => {
     var stockChecker = new StockChecker(mockPriceObject);
     expect(stockChecker.getSymbol()).toBe('VTWIX')
-    expect(stockChecker.checkPercent()).toBe(null)
+    expect(stockChecker.checkPercent()).toBe(false)
   })
   it('returns percentage + info if down 5%', () => {
     var stockChecker = new StockChecker(mockPriceDataOver5);
     expect(stockChecker.checkPercent()).toBe('VTWIX is down by -5.00%; $182.78')
   })
   it('sets custom price percent change threshold', () => {
-    var stockChecker = new StockChecker(mockPriceObject, 1);
+    var stockChecker = new StockChecker(mockPriceObject, -1);
     expect(stockChecker.checkPercent()).toBe('VTWIX is down by -1.05%; $192.40')
+  })
+  it('sets custom price percent change threshold & returns false', () => {
+    var stockChecker = new StockChecker(mockPriceObject, -1.5);
+    expect(stockChecker.checkPercent()).toBe(false)
   })
 })

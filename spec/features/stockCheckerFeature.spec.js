@@ -8,7 +8,7 @@ describe('StockChecker works with live API', () => {
     expect(stockChecker.getSymbol()).toBe('VTI')
   })
   xit('returns info string ', async () => {
-    // works a t 11:34pm 20/1 but this will fail - 
+    // works at 11:34pm 20/1 but this will fail - 
     // could get a robust one dynamically by using the biggestLoser endpoint
     var priceData = await getPriceData('btc-gbp', 'gb')
     var stockChecker = new StockChecker(priceData);

@@ -9,6 +9,8 @@ const mockPriceDataOver5 = {
   regularMarketChangePercent: { raw: -0.050042556, fmt: '-5.00%' }
 }
 
+const priceDataArray = [mockPriceDataOver5, mockPriceObject]
+
 describe('StockChecker', () => {
   it('returns false when percent change < 5%', () => {
     var stockChecker = new StockChecker(mockPriceObject);

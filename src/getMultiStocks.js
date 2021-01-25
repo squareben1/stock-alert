@@ -4,13 +4,11 @@ getMultiStocks = (array) => {
   return array.map(x => new StockChecker(x).checkPercent())
 }
 
-checkMultiStocksArray = (array) => {
-  if (array.every((el) => el == false)) {
-    return false
-  } else {
-    return 'VTWIX is down by -5.00%; $182.78\nVTWIX is down by -5.00%; $182.78'
-  }
-
+filterJoinArray = (array) => {
+  const filteredArray = array.filter(i => i !== false)
+  return filteredArray.join('\n')
+  // is this how I want to do this? It will need a string.length check
+  // in handler...seems...lame?
 }
 
-module.exports = { getMultiStocks, checkMultiStocksArray }
+module.exports = { getMultiStocks, filterJoinArray }

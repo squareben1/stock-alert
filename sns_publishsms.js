@@ -6,7 +6,7 @@ AWS.config.update({ region: 'eu-west-2' });
 // Create publish parameters
 var params = {
   Message: 'TEXT_MESSAGE', /* required */
-  PhoneNumber: '+447952019947',
+  PhoneNumber: '+number',
 };
 
 // Create promise and SNS service object

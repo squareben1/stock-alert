@@ -35,4 +35,14 @@ describe('getMultiStocks', () => {
   })
 })
 
-
+describe('checkMultiStocksArray', () => {
+  it('returns false if only false values in array', () => {
+    inputArray = [false, false]
+    expect(multiStockModule.checkMultiStocksArray(inputArray)).toBe(false)
+  })
+  it('returns condensed string if no values in array', () => {
+    stringArray = ['VTWIX is down by -5.00%; $182.78', 'VTWIX is down by -5.00%; $182.78']
+    expected = 'VTWIX is down by -5.00%; $182.78\nVTWIX is down by -5.00%; $182.78'
+    expect(multiStockModule.checkMultiStocksArray(stringArray)).toBe(expected)
+  })
+})

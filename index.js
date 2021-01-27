@@ -1,7 +1,7 @@
 const StockChecker = require('./src/StockChecker')
 const priceDataModule = require('./src/getPriceData')
 const multiStockModule = require('./src/getMultiStocks')
-const sendSMS = require('./sns_publishsms')
+const sendSMS = require('./sendSMS')
 
 const targetArray = [
   {

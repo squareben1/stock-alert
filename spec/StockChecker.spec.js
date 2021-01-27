@@ -13,12 +13,12 @@ const priceDataArray = [mockPriceDataOver5, mockPriceObject]
 
 describe('StockChecker', () => {
   it('returns false when percent change < 5%', () => {
-    var stockChecker = new StockChecker(mockPriceObject);
+    var stockChecker = new StockChecker(mockPriceObject, -5);
     expect(stockChecker.getSymbol()).toBe('VTWIX')
     expect(stockChecker.checkPercent()).toBe(false)
   })
   it('returns percentage + info if down 5%', () => {
-    var stockChecker = new StockChecker(mockPriceDataOver5);
+    var stockChecker = new StockChecker(mockPriceDataOver5, -5);
     expect(stockChecker.checkPercent()).toBe('VTWIX is down by -5.00%; $182.78')
   })
   it('sets custom price percent change threshold', () => {

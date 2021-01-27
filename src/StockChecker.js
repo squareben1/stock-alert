@@ -1,6 +1,6 @@
 
 class StockChecker {
-  constructor(priceDataObject, marketChangePercentThreshold = -5) {
+  constructor(priceDataObject, marketChangePercentThreshold) {
     this.currencySymbol = priceDataObject.currencySymbol
     this.regularMarketPrice = priceDataObject.regularMarketPrice.fmt
     this.symbol = priceDataObject.symbol

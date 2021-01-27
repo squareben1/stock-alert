@@ -1,29 +1,41 @@
 const StockChecker = require('./src/StockChecker')
 const priceDataModule = require('./src/getPriceData')
 const multiStockModule = require('./src/getMultiStocks')
-const sendSMS = require('./sendSMS')
+const sendSMS = require('./src/sendSMS')
 
-const targetArray = [
-  {
-    // Vanguard FTSA Global All Cap Acc
-    symbol: '0P00018XAR.L',
-    region: "en"
-  },
-  {
-    symbol: 'btc-gbp',
-    region: "en"
-  },
-  {
-    symbol: 'DNLM.L',
-    region: "en"
-  },
-]
+// TODO: add here? - const defaultMarketChangePercent = -5
+
+// const targetArray = [
+//   {
+//     // Vanguard FTSA Global All Cap Acc
+//     symbol: '0P00018XAR.L',
+//     region: "en"
+//   },
+//   {
+//     symbol: 'btc-gbp',
+//     region: "en"
+//   },
+//   {
+//     symbol: 'DNLM.L',
+//     region: "en"
+//   },
+// ]
+
+// need to refactor to accomodate JSON only event data w/ multi target stocks
 
 exports.handler = async (event) => {
+  const targetArray = [event]
+  console.log("event:", event)
+  console.log("targetArray", targetArray)
   const priceDataArray = await priceDataModule.getMultiplePriceData(targetArray)
-  stringArray = multiStockModule.getMultiStocks(priceDataArray)
-  const priceData = await priceDataModule.getPriceData('vti')
-  checker = new StockChecker(priceData, -0.10)
-  return checker.checkPercent()
-};
+  const stringArray = multiStockModule.getMultiStocks(priceDataArray, -0.5)
+  const joinedResultString = multiStockModule.filterJoinArray(stringArray)
+  console.log('joinedResultString', joinedResultString)
 
+  if (joinedResultString.length > 0) {
+    console.log('SMS Sent:', joinedResultString)
+    sendSMS(joinedResultString)
+  } else {
+    console.log("SMS NOT sent")
+  }
+};

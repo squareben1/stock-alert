@@ -12,3 +12,5 @@ filterJoinArray = (array) => {
 }
 
 module.exports = { getMultiStocks, filterJoinArray }
+
+// TODO: rename this module?

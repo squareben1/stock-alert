@@ -9,6 +9,7 @@
   "dependencies": {
     "aws-sdk": "^2.831.0",
     "axios": "^0.21.1",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "jest-aws-sdk-mock": "^1.0.2"
   }
 }

@@ -23,4 +23,5 @@ class StockChecker {
   }
 }
 
+// TODO: function that sets diff marketChangePercent for BTC
 module.exports = StockChecker

@@ -1,8 +1,11 @@
 const StockChecker = require('./src/StockChecker')
-const getPriceData = require('./src/getPriceData')
+const priceDataModule = require('./src/getPriceData')
+const multiStockModule = require('./src/getMultiStocks')
+const sendSMS = require('./sns_publishsms')
 
 const targetArray = [
   {
+    // Vanguard FTSA Global All Cap Acc
     symbol: '0P00018XAR.L',
     region: "en"
   },
@@ -11,13 +14,15 @@ const targetArray = [
     region: "en"
   },
   {
-    symbol: '0P00018XAR.L',
+    symbol: 'DNLM.L',
     region: "en"
   },
 ]
 
 exports.handler = async (event) => {
-  const priceData = await getPriceData('vti')
+  const priceDataArray = await priceDataModule.getMultiplePriceData(targetArray)
+  stringArray = multiStockModule.getMultiStocks(priceDataArray)
+  const priceData = await priceDataModule.getPriceData('vti')
   checker = new StockChecker(priceData, -0.10)
   return checker.checkPercent()
 };

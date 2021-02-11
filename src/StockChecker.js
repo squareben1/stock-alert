@@ -8,6 +8,7 @@ class StockChecker {
     this.marketChangePercentFloat = parseFloat(this.marketChangePercentString)
     this.marketChangePercentThreshold = marketChangePercentThreshold
   }
+
   checkPercent = () => {
     if (this.marketChangePercentFloat <= this.marketChangePercentThreshold) {
       const responseString = `${this.symbol} is down by ${this.marketChangePercentString}; ${this.currencySymbol + this.regularMarketPrice}`

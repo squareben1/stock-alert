@@ -1,6 +1,29 @@
 const StockChecker = require('../src/StockChecker')
 const multiStockModule = require('../src/getMultiStocks');
+const mockPriceObject = require('../mockStockObject.json')
 
+const mockPriceDataOver5 = {
+  currencySymbol: '$',
+  currency: 'USD',
+  regularMarketPrice: { raw: 192.4, fmt: '182.78' },
+  symbol: 'VTWIX',
+  regularMarketChangePercent: { raw: -0.050042556, fmt: '-5.00%' }
+}
+
+const priceDataArray = [mockPriceDataOver5, mockPriceObject]
+
+const targetStonkEvent = [
+  {
+    "symbol": "DNLM.L",
+    "region": "en",
+    "marketChangePercent": "-5"
+  },
+  {
+    "symbol": "btc-gbp",
+    "region": "en",
+    "marketChangePercent": "-5"
+  }
+]
 
 jest.mock('../src/StockChecker')
 
@@ -50,4 +73,18 @@ describe('filterJoinArray', () => {
     expected = 'VTWIX is down by -5.00%; $182.78'
     expect(multiStockModule.filterJoinArray(stringArray)).toBe(expected)
   })
+})
+
+describe('getStringArray', () => {
+  it('runs against two arrays', () => {
+    const mockCheckPercent = jest.fn();
+    StockChecker.prototype.checkPercent = mockCheckPercent;
+    mockCheckPercent.mockReturnValue('VTWIX is down by -5.00%; $182.78');
+
+    expected = ['VTWIX is down by -5.00%; $182.78', 'VTWIX is down by -5.00%; $182.78']
+    expect(multiStockModule.getStringArray(priceDataArray, targetStonkEvent)).toMatchObject(expected)
+
+    // expect(multiStockModule.getStringArray(priceDataArray, targetStonkEvent)).toBe("5")
+  })
+
 })

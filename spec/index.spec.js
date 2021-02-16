@@ -1,4 +1,4 @@
-const formatterModule = require('../src/formatEvent')
+require('../index')
 
 const targetStonkEventSingle = [
   {
@@ -40,10 +40,10 @@ describe('stripMarketPercent', () => {
         "region": "en"
       }
     ]
-    expect(formatterModule.stripMarketPercent(targetStonkEventSingle)).toMatchObject(expected)
+    expect(stripMarketPercent(targetStonkEventSingle)).toMatchObject(expected)
   })
 
   it('returns array of symbol/region key pair json objs', () => {
-    expect(formatterModule.stripMarketPercent(targetStonkEvent)).toMatchObject(strippedArray)
+    expect(stripMarketPercent(targetStonkEvent)).toMatchObject(strippedArray)
   })
 })

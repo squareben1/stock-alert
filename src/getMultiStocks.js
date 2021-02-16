@@ -1,9 +1,5 @@
 const StockChecker = require('./StockChecker')
 
-getMultiStocks = (array, marketChangePercentThreshold = -5) => {
-  return array.map(x => new StockChecker(x, marketChangePercentThreshold).checkPercent())
-}
-
 filterJoinArray = (array) => {
   const filteredArray = array.filter(i => i !== false)
   return filteredArray.join('\n')

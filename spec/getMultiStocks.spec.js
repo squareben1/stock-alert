@@ -16,12 +16,12 @@ const targetStonkEvent = [
   {
     "symbol": "DNLM.L",
     "region": "en",
-    "marketChangePercent": "-5"
+    "targetMarketChangePercent": -5
   },
   {
     "symbol": "btc-gbp",
     "region": "en",
-    "marketChangePercent": "-5"
+    "targetMarketChangePercent": -5
   }
 ]
 
@@ -65,7 +65,7 @@ describe('getStringArray', () => {
     action = multiStockModule.getStringArray(priceDataArray, targetStonkEvent)
     expected = ['VTWIX is down by -5.00%; $182.78', 'VTWIX is down by -5.00%; $182.78']
     expect(action).toMatchObject(expected)
-    expect(StockChecker).toBeCalledWith(mockPriceDataOver5, "-5")
+    expect(StockChecker).toBeCalledWith(mockPriceDataOver5, -5)
   })
 
   it('returns false if none of the multi objects over threshold', () => {

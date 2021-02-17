@@ -29,4 +29,5 @@ describe('StockChecker', () => {
     var stockChecker = new StockChecker(mockPriceObject, -1.5);
     expect(stockChecker.checkPercent()).toBe(false)
   })
+
 })

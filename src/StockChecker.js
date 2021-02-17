@@ -1,21 +1,21 @@
 
 class StockChecker {
-  constructor(priceDataObject, marketChangePercentThreshold) {
+  constructor(priceDataObject, targetMarketChangePercent = -5) {
     this.currencySymbol = priceDataObject.currencySymbol
     this.regularMarketPrice = priceDataObject.regularMarketPrice.fmt
     this.symbol = priceDataObject.symbol
     this.marketChangePercentString = priceDataObject.regularMarketChangePercent.fmt
     this.marketChangePercentFloat = parseFloat(this.marketChangePercentString)
-    this.marketChangePercentThreshold = marketChangePercentThreshold
+    this.targetMarketChangePercent = targetMarketChangePercent
   }
 
   checkPercent = () => {
-    if (this.marketChangePercentFloat <= this.marketChangePercentThreshold) {
+    if (this.marketChangePercentFloat <= this.targetMarketChangePercent) {
       const responseString = `${this.symbol} is down by ${this.marketChangePercentString}; ${this.currencySymbol + this.regularMarketPrice}`
       console.log(responseString)
       return responseString
     } else {
-      console.log(`Below Threshold: ${this.symbol} change = ${this.marketChangePercentString}`)
+      console.log(`${this.symbol} is below change threshold; change % = ${this.marketChangePercentString}`)
       return false
     }
   }
@@ -24,5 +24,4 @@ class StockChecker {
   }
 }
 
-// TODO: function that sets diff marketChangePercent for BTC
 module.exports = StockChecker

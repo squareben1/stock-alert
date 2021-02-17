@@ -12,7 +12,7 @@ sendSMS = async (message = "Test SMS") => {
   return new Promise(function (resolve, reject) {
     console.log('sendSMS.Promise')
     SNS.publish(params, function (err, data) {
-      console.log("MessageID is " + data.MessageId)
+      console.log("SMS MessageID is " + data.MessageId)
       if (err) {
         console.log(err)
         reject(err)

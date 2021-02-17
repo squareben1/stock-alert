@@ -15,15 +15,13 @@ exports.handler = async (event) => {
   try {
     const priceDataArray = await priceDataModule.getMultiplePriceData(targetArray)
     const stringArray = multiStockModule.getStringArray(priceDataArray, event)
-    const joinedResultString = multiStockModule.filterJoinArray(stringArray)
+    var joinedResultString = multiStockModule.filterJoinArray(stringArray)
   } catch (e) {
     console.log("Error:", e)
   }
   console.log('joinedResultString: ', joinedResultString)
 
-  const isResult = joinedResultString.length > 0
-
-  if (isResult) {
+  if (joinedResultString.length > 0) {
     console.log('SMS Sent:', joinedResultString)
     sendSMS(joinedResultString)
   } else {

@@ -8,7 +8,6 @@ filterJoinArray = (array) => {
 }
 
 getStringArray = (dataArray, percentArray) => {
-  // dataArray.forEach((a, i) => console.log(a + percentArray[i].marketChangePercent));
   const stringArray = []
   for (var i = 0; i < dataArray.length; i += 1) {
     stringArray.push(new StockChecker(dataArray[i], percentArray[i].marketChangePercent).checkPercent())
@@ -16,6 +15,6 @@ getStringArray = (dataArray, percentArray) => {
   return stringArray
 }
 
-module.exports = { getMultiStocks, filterJoinArray, getStringArray }
+module.exports = { filterJoinArray, getStringArray }
 
 // TODO: rename this module?

@@ -58,15 +58,14 @@ describe('filterJoinArray', () => {
 })
 
 describe('getStringArray', () => {
-  it('runs against two arrays', () => {
+  it('runs against both arrays using stockObj and %change from each respectively', () => {
     const mockCheckPercent = jest.fn();
     StockChecker.prototype.checkPercent = mockCheckPercent;
     mockCheckPercent.mockReturnValue('VTWIX is down by -5.00%; $182.78');
-
+    action = multiStockModule.getStringArray(priceDataArray, targetStonkEvent)
     expected = ['VTWIX is down by -5.00%; $182.78', 'VTWIX is down by -5.00%; $182.78']
-    expect(multiStockModule.getStringArray(priceDataArray, targetStonkEvent)).toMatchObject(expected)
-
-    // expect(multiStockModule.getStringArray(priceDataArray, targetStonkEvent)).toBe("5")
+    expect(action).toMatchObject(expected)
+    expect(StockChecker).toBeCalledWith(mockPriceDataOver5, "-5")
   })
 
   it('returns false if none of the multi objects over threshold', () => {

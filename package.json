@@ -4,7 +4,7 @@
   },
   "scripts": {
     "test": "jest --detectOpenHandles",
-    "locally": "node -e \"console.log(require('./index').handler({}));\"",
+    "locally": "node -e \"console.log(require('./index').handler([{'symbol': '0P00018XAR.L', 'region': 'en', 'targetMarketChangePercent': -0.01}]));\"",
     "deploy": "./deployScript.sh"
   },
   "dependencies": {

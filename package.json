@@ -4,7 +4,8 @@
   },
   "scripts": {
     "test": "jest --detectOpenHandles",
-    "locally": "node -e \"console.log(require('./index').handler({}));\""
+    "locally": "node -e \"console.log(require('./index').handler({}));\"",
+    "deploy": "./deployScript.sh"
   },
   "dependencies": {
     "aws-sdk": "^2.831.0",

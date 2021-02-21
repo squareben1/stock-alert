@@ -1,0 +1,3 @@
+API_KEY="exampleAwsApiKey"
+MOBILE_NUMBER="+447987654321"
+LAMBDA_FUNCTION_NAME="arn:aws:example"

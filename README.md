@@ -1,3 +1,3 @@
 # Stock Alerter
 
-Alert on regularMarketChangePercent of index. 
+Alert on regularMarketChangePercent of stocks & indexes. 

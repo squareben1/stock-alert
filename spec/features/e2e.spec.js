@@ -11,7 +11,8 @@ describe('E2E Tests', () => {
   const targetArray = [
     {
       symbol: 'vtwix',
-      region: "us"
+      region: "us",
+      targetMarketChangePercent: -10
     },
     {
       symbol: 'btc-gbp',

@@ -1,4 +1,3 @@
-const StockChecker = require('./src/StockChecker')
 const priceDataModule = require('./src/getPriceData')
 const multiStockModule = require('./src/getMultiStocks')
 const sendSMS = require('./src/sendSMS')
@@ -23,7 +22,7 @@ exports.handler = async (event) => {
 
   if (joinedResultString.length > 0) {
     console.log('SMS Sent:', joinedResultString)
-    sendSMS(joinedResultString)
+    await sendSMS(joinedResultString)
   } else {
     console.log("SMS NOT sent")
   }

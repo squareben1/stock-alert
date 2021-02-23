@@ -14,10 +14,10 @@ sendSMS = async (message = "Test SMS") => {
     SNS.publish(params, function (err, data) {
       console.log("SMS MessageID is " + data.MessageId)
       if (err) {
-        console.log(err)
+        console.log("Error in sendSMS: ", err)
         reject(err)
       } else {
-        console.log(data)
+        console.log("Success in sendSMS:", data)
         resolve(data)
       }
     })

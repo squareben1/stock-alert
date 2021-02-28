@@ -5,6 +5,12 @@ then
   export $(cat .env | sed 's/#.*//g' | xargs)
 fi
 
+echo "----------Destory node_modules----------"
+rm -rf node_modules
+
+echo "----------yarn install prod node_modules----------"
+yarn install --production
+
 echo "----------Zipping directory----------"
 zip -r stock-alert.zip . -x "./gitignore" "*.git*" 
 

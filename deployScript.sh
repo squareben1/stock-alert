@@ -16,7 +16,7 @@ zip -r stock-alert.zip . -x "./gitignore" "*.git*"
 
 echo "----------Deploying Lambda to AWS----------"
 aws lambda update-function-code \
---function-name "$LAMBDA_FUNCTION_NAME" \
+--function-name "$LAMBDA_FUNCTION_ARN" \
 --region eu-west-2 \
 --zip-file fileb://stock-alert.zip \
 --cli-connect-timeout 6000 | cat

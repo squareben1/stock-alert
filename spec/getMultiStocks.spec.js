@@ -62,9 +62,9 @@ describe('getStringArray', () => {
     const mockCheckPercent = jest.fn();
     StockChecker.prototype.checkPercent = mockCheckPercent;
     mockCheckPercent.mockReturnValue('VTWIX is down by -5.00%; $182.78');
-    action = multiStockModule.getStringArray(priceDataArray, targetStonkEvent)
+    result = multiStockModule.getStringArray(priceDataArray, targetStonkEvent)
     expected = ['VTWIX is down by -5.00%; $182.78', 'VTWIX is down by -5.00%; $182.78']
-    expect(action).toMatchObject(expected)
+    expect(result).toMatchObject(expected)
     expect(StockChecker).toBeCalledWith(mockPriceDataOver5, -5)
   })
 

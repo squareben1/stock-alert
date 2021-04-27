@@ -7,7 +7,7 @@ AWSMock.mock('SNS', 'publish', 'test-message');
 
 AWSMock.restore('SNS', 'publish');
 
-describe('E2E Tests', () => {
+xdescribe('E2E Tests', () => {
   const targetArray = [
     {
       symbol: 'vtwix',

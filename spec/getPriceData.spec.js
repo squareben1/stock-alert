@@ -1,5 +1,5 @@
 const priceDataModule = require("../src/getPriceData");
-const mockPriceObject = require('../mockStockObject.json')
+const mockPriceObject = require("../mockStockObject.json");
 
 xdescribe("getPriceData", () => {
   it("returns price data from yahoo finance API", async () => {
@@ -12,7 +12,7 @@ describe("getMultiplePriceData", () => {
   it("returns arr of priceData objects", async () => {
     const mockGetPriceData = jest.fn();
     priceDataModule.getPriceData = mockGetPriceData;
-    mockGetPriceData.mockReturnValue(mockPriceObject)
+    mockGetPriceData.mockReturnValue(mockPriceObject);
     const targetArray = [
       {
         symbol: "vtwix",

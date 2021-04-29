@@ -33,22 +33,20 @@ jobs:
         node-version: [14.x]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
       - name: yarn install and build
         run: 
-          yarn ci
           yarn install
-          yarn run build --if-present
         env:
           CI: true
       - name: zip
         uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./bundle.zip ./
+          args: zip -r bundle.zip . -x "./gitignore" "*.git*" 
       - name: default deploy
         uses: appleboy/lambda-action@master
         with:

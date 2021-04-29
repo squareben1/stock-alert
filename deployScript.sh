@@ -25,3 +25,4 @@ echo "----------Lambda Deployed----------"
 
 echo "----------Clean up----------"
 rm stock-alert.zip
+echo "----------Zip Destroyed----------"

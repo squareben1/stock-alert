@@ -8,8 +8,8 @@ stripMarketPercent = (arr) => {
 
 exports.handler = async (event) => {
   const targetArray = stripMarketPercent(event);
-  console.log("event:", event);
-  console.log("targetArray", targetArray);
+  console.log("index.handler event:", event);
+  console.log("index.handler targetArray:", targetArray);
 
   try {
     const priceDataArray = await priceDataModule.getMultiplePriceData(
@@ -26,6 +26,6 @@ exports.handler = async (event) => {
     console.log("SMS Sent:", joinedResultString);
     await sendSMS(joinedResultString);
   } else {
-    console.log("SMS NOT sent");
+    console.log(`joinedResultString.length = ${joinedResultString.length}: SMS NOT sent`);
   }
 };

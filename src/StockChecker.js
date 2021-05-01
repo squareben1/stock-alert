@@ -14,10 +14,10 @@ class StockChecker {
       const responseString = `${this.symbol} is down by ${
         this.marketChangePercentString
       }; ${this.currencySymbol + this.regularMarketPrice}`;
-      console.log("checkPercent() responseString: ", responseString);
+      console.info("checkPercent() responseString: ", responseString);
       return responseString;
     } else {
-      console.log(
+      console.info(
         `${this.symbol} is below change threshold; change % = ${this.marketChangePercentString}`
       );
       return false;

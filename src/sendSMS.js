@@ -10,14 +10,14 @@ sendSMS = async (message = "Test SMS") => {
   };
 
   return new Promise(function (resolve, reject) {
-    console.log("sendSMS.Promise");
+    console.info("sendSMS.Promise");
     SNS.publish(params, function (err, data) {
-      console.log("SMS MessageID is " + data.MessageId);
+      console.info("SMS MessageID is " + data.MessageId);
       if (err) {
-        console.log("Error in sendSMS: ", err);
+        console.error("Error in sendSMS: ", err);
         reject(err);
       } else {
-        console.log("Success in sendSMS:", data);
+        console.info("Success in sendSMS:", data);
         resolve(data);
       }
     });

@@ -19,7 +19,7 @@ getPriceData = (symbol, region = "us") => {
       return priceData;
     })
     .catch(function (error) {
-      console.error(error);
+      console.error("Error in getPriceData axios request: ", error);
     });
 };
 
@@ -27,7 +27,6 @@ getMultiplePriceData = async (arr) => {
   const promises = arr.map((x) =>
     priceDataModule.getPriceData(x.symbol, x.region)
   );
-
   const priceDataObjectArr = await Promise.all(promises);
   return priceDataObjectArr;
 };
